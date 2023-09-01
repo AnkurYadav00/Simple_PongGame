@@ -26,9 +26,11 @@ class Score(Turtle):
         self.score_keeper()
 
     def score_keeper(self):
+        """ refreshes score everytime called"""
         self.clear()
         self.write(f"{self.left_score}  {self.right_score}", False, ALIGN_SCOREBOARD, (FONT_NAME, FONT_SIZE, FONT_TYPE))
 
     def gameOver(self):
+        """ Game Over """
         self.goto(0, 0)
         self.write("Game  Over", False, ALIGN_SCOREBOARD, (FONT_NAME, FONT_SIZE, FONT_TYPE))

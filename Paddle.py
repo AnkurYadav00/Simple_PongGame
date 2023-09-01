@@ -22,6 +22,7 @@ class Paddles:
             self.left_paddle.append(self.create_paddle(LEFT_PADDLE_POSITION[i]))
 
     def create_paddle(self, position):
+        """ paddle segment setup like shape,color, speed and initial position"""
         self.segment = Turtle()
         self.segment.speed("fastest")
         self.segment.penup()
@@ -32,24 +33,28 @@ class Paddles:
         return self.segment
 
     def left_paddle_moveUp(self):
+        """ moves left paddle up, but not outside the screen """
         if self.left_paddle[0].ycor() >= PADDLE_CONSTRAINT:
             return None
         for i in range(len(self.left_paddle)):
             self.left_paddle[i].forward(20)
 
     def right_paddle_moveUp(self):
+        """ moves right paddle up, but not outside the screen """
         if self.right_paddle[0].ycor() >= PADDLE_CONSTRAINT:
             return None
         for i in range(len(self.right_paddle)):
             self.right_paddle[i].forward(20)
 
     def left_paddle_moveDown(self):
+        """ moves left paddle down, but not outside the screen """
         if self.left_paddle[-1].ycor() <= -PADDLE_CONSTRAINT:
             return None
         for i in range(len(self.left_paddle) - 1, -1, -1):
             self.left_paddle[i].backward(20)
 
     def right_paddle_moveDown(self):
+        """ moves right paddle down, but not outside the screen """
         if self.right_paddle[-1].ycor() <= -PADDLE_CONSTRAINT:
             return None
         for i in range(len(self.right_paddle) - 1, -1, -1):

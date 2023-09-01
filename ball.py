@@ -16,9 +16,11 @@ class Ball:
         self.ball.setheading(BALL_STARTING_DIRECTION)
 
     def ball_motion(self):
+        """ moves ball in single direction """
         self.ball.forward(20)
 
     def ball_angle_quadrant(self):
+        """ checks ball angle wrt +x-direction, returns quadrant and updated ball angle"""
         current_angle = self.ball.heading()
         if 0 <= current_angle <= 90 or 180 <= current_angle <= 270:
             return "first or third", current_angle - 90, current_angle + 90
@@ -26,6 +28,7 @@ class Ball:
             return "second or fourth", current_angle + 90, current_angle - 90
 
     def wall_collision(self):
+        """ wall collision with ball and reflects ball back"""
         self.ball.speed("fastest")
         current_angle = self.ball_angle_quadrant()
         if not (self.ball.ycor() >= TOP or self.ball.ycor() <= BOTTOM):
@@ -35,6 +38,7 @@ class Ball:
         self.ball.speed("normal")
 
     def paddle_collision(self, paddle):
+        """ check paddle collision with ball """
         self.ball.speed("fastest")
         current_angle = self.ball_angle_quadrant()
         if self.ball.distance(paddle.position()) > 25:

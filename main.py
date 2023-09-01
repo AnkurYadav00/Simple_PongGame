@@ -28,12 +28,15 @@ from ball import Ball
 
 
 def main():
+    #screen setup
     screen = Screen()
     screen.title("Pong Game")
     screen.bgcolor("black")
     screen.setup(1000, 600)
+    # setting tracer off
     screen.tracer(0)
 
+    # activating key listeners
     screen.listen()
 
     # create paddle and ball object
@@ -42,12 +45,13 @@ def main():
     score = Score()
     screen.update()
 
-    # control paddles motion
+    # control paddles motion with the help of key listeners and higher order function
     screen.onkeypress(paddle.right_paddle_moveDown, "Down")
     screen.onkeypress(paddle.right_paddle_moveUp, "Up")
     screen.onkeypress(paddle.left_paddle_moveDown, "s")
     screen.onkeypress(paddle.left_paddle_moveUp, "w")
 
+    # game run condition
     is_game_on = True
 
     while is_game_on:
@@ -69,6 +73,7 @@ def main():
             is_game_on = not is_game_on
             score.gameOver()
 
+    # exit game on click after game over
     screen.exitonclick()
 
 
